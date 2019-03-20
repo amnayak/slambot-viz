@@ -1,7 +1,10 @@
 const express = require("express");
 const router = express.Router();
+const bodyParser = require('body-parser');
 var getData = require('./data').getData;
 var pushData = require('./data').pushData;
+
+router.use(bodyParser.urlencoded({ extended: false }));
 
 //TODO: for now, we're assuming the data comes in with a size field
 router.get("/hello", (req, res) => {
@@ -15,8 +18,7 @@ router.get('/', function(req, res){
 router.post('/data', function(req, res){
    //Check if all fields are provided and are valid:
    //TODO: double check regex
-   //TODO add body parser
-   
+
    var xValid = req.body.x.toString().match(/^[0-9]{1,}$/g) ||
                 req.body.x.toString().match(/^[0-9]{1,}\.[0-9]{1,}$/g);
    var yValid = req.body.y.toString().match(/^[0-9]{1,}$/g) ||
