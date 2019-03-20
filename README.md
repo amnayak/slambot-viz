@@ -7,6 +7,8 @@ Web application made for 18-500: ECE Design Experience at Carnegie Mellon Univer
 
     `cd client`
     
+    `npm install`
+    
     `npm run start`
     
     The client runs on `localhost:3000`
@@ -15,6 +17,8 @@ Web application made for 18-500: ECE Design Experience at Carnegie Mellon Univer
 2) To run the server:
 
     `cd server`
+    
+    `npm install`
     
     `node app.js`
     
