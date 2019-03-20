@@ -8,7 +8,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      response: false,
+      response: [],
       endpoint: "http://127.0.0.1:3001"
     };
   }
@@ -21,12 +21,13 @@ class App extends Component {
 
   render() {
     const { response } = this.state;
+    var graphDim = Math.max(Math.min(window.innerHeight, window.innerWidth) - 50, 200);
 
     return (
       <div className="App">
         <h3> Slambot Visualization </h3>
         <div align="center">
-          <Plot data={response} height="300" width="300"></Plot>
+          <Plot data={response} height={graphDim} width={graphDim}></Plot>
         </div>
       </div>
     );
