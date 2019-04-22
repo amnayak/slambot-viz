@@ -8,5 +8,5 @@ var data = [
 
 module.exports = {
   getData: function(){ return data;},
-  pushData: function(datapoint) {data.push(datapoint);}
+  setData: function(datapoint) {data = datapoint;}
 };

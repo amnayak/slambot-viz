@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bodyParser = require('body-parser');
 var getData = require('./data').getData;
-var pushData = require('./data').pushData;
+var setData = require('./data').setData;
 
 router.use(bodyParser.urlencoded({ extended: false }));
 
@@ -16,27 +16,29 @@ router.get('/', function(req, res){
 });
 
 router.post('/data', function(req, res){
-   //Check if all fields are provided and are valid:
-   //TODO: double check regex
+  //input is a flattened array in row-major order
+  input_json = req.body.data
 
-   var xValid = req.body.x.toString().match(/^[0-9]{1,}$/g) ||
-                req.body.x.toString().match(/^[0-9]{1,}\.[0-9]{1,}$/g);
-   var yValid = req.body.y.toString().match(/^[0-9]{1,}$/g) ||
-                req.body.y.toString().match(/^[0-9]{1,}\.[0-9]{1,}$/g);
-   var sizeValid = req.body.size.toString().match(/^[0-9]{1,2}$/g);
+  //ouput is an array of {x,y,size}
+  datapoints = []
+  var x, y;
+  for (x = 0; x < 144; x++) {
+    for (y = 0; y < 144; y++) {
+      if (input_json[(144*x) + y] == 1) {
+        x_data = x;
+        y_data = y;
+        datapoints.push({
+          x: x_data,
+          y: y_data,
+          size: 1
+        });
+      }
+    }
+  }
 
+    setData(datapoints);
+    res.json({message: "Map updated."});
 
-   if(!xValid || !yValid || !sizeValid){
-      res.status(400);
-      res.json({message: "Bad Request: missing or invalid parameter"});
-   } else {
-      pushData({
-         x: req.body.x,
-         y: req.body.y,
-         size: req.body.size
-      });
-      res.json({message: "New datapoint added."});
-   }
 });
 
 module.exports = router;
