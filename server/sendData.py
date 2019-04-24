@@ -1,5 +1,8 @@
 import random
 import requests
+import os
+
+server = (os.getenv('SERVER', 'http://localhost:3001'))
 
 # use to send fake data
 
@@ -19,12 +22,12 @@ payload = {
         'data': randData
 }
 
-to = 'http://localhost:3001/data'
+to = server + '/data'
 r = requests.post(to, data=payload)
 
 print(r)
 
-to = 'http://localhost:3001/robot'
+to = server + '/robot'
 r = requests.post(to, data=randPos)
 
 print(r)
