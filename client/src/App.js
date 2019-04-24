@@ -25,7 +25,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h3> Slambot Visualization </h3>
+        <h3> 2D SLAM: Live Mapping </h3>
         <div align="center">
           <Plot data={response} height={graphDim} width={graphDim}></Plot>
         </div>

@@ -24,15 +24,15 @@ router.post('/data', function(req, res){
   var x, y;
   for (x = 0; x < 144; x++) {
     for (y = 0; y < 144; y++) {
-      if (input_json[(144*x) + y] == 1) {
+
         x_data = x;
         y_data = y;
         datapoints.push({
           x: x_data,
           y: y_data,
-          size: 1
+          color: input_json[(144*x) + y]
         });
-      }
+
     }
   }
 
