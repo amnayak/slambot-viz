@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 var getData = require('./data').getData;
 var setData = require('./data').setData;
 
-router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.urlencoded({limit: '50mb', extended: false, parameterLimit: 1000000}));
 
 //TODO: for now, we're assuming the data comes in with a size field
 router.get("/hello", (req, res) => {
