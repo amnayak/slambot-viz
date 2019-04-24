@@ -3,6 +3,7 @@ const router = express.Router();
 const bodyParser = require('body-parser');
 var getData = require('./data').getData;
 var setData = require('./data').setData;
+var setRobotPosition = require('./data').setRobotPosition;
 
 router.use(bodyParser.urlencoded({limit: '50mb', extended: false, parameterLimit: 1000000}));
 
@@ -13,6 +14,13 @@ router.get("/hello", (req, res) => {
 
 router.get('/', function(req, res){
    res.json(getData());
+});
+
+router.post('/robot', function(req, res){
+  setRobotPosition({x: req.body.x,
+                    y: req.body.y});
+
+  res.json({message: "Robot position updated."});
 });
 
 router.post('/data', function(req, res){
@@ -32,7 +40,6 @@ router.post('/data', function(req, res){
           y: y_data,
           color: input_json[(144*x) + y]
         });
-
     }
   }
 

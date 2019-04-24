@@ -5,7 +5,6 @@ import {XYPlot, HeatmapSeries, VerticalGridLines,HorizontalGridLines,
 class Plot extends Component {
   render() {
     function getColor(d) {
-      console.log(d.color);
       switch (d.color) {
         case '-1':
             return '#e7cac9'
@@ -13,6 +12,8 @@ class Plot extends Component {
             return '#f6ecc8'
         case '1':
             return '#de7565'
+        case '2':
+            return '#222e55'
         default:
             return '#f3bfb2'
       }
@@ -31,8 +32,8 @@ class Plot extends Component {
               data={this.props.data}/>
           </XYPlot>
           <DiscreteColorLegend
-              items={['Unexplored', 'Wall', 'Hallway']}
-              colors={['#e7cac9', '#de7565', '#f6ecc8']}/>
+              items={['Unexplored', 'Wall', 'Hallway', 'Robot']}
+              colors={['#e7cac9', '#de7565', '#f6ecc8', '#222e55']}/>
       </div>
     );
   }

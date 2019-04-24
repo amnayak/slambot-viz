@@ -1,5 +1,3 @@
-import json
-import urllib2
 import random
 import requests
 
@@ -10,7 +8,12 @@ for i in range(144):
     for j in range(144):
         randData.append(random.randint(-1, 1)) #push values from [-1, 1]
 
-print(randData)
+randPos = {
+    'x' : random.randint(0, 144),
+    'y' : random.randint(0, 144)
+}
+
+print(randPos)
 
 payload = {
         'data': randData
@@ -19,6 +22,9 @@ payload = {
 to = 'http://localhost:3001/data'
 r = requests.post(to, data=payload)
 
+print(r)
 
-print('sent map to ' + to)
+to = 'http://localhost:3001/robot'
+r = requests.post(to, data=randPos)
+
 print(r)
