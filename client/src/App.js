@@ -4,12 +4,16 @@ import Plot from "./plot.js";
 import '../node_modules/react-vis/dist/style.css';
 import socketIOClient from "socket.io-client";
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 class App extends Component {
   constructor() {
     super();
     this.state = {
       response: [],
-      endpoint: "http://127.0.0.1:3001"
+      endpoint: process.env.PORT || "http://127.0.0.1:3001"
     };
   }
 

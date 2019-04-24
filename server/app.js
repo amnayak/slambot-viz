@@ -3,6 +3,10 @@ const http = require("http");
 const socketIo = require("socket.io");
 const axios = require("axios");
 
+if (process.env.NODE_ENV !== 'production') {
+  require('dotenv').config();
+}
+
 var getData = require('./data').getData;
 
 const port = process.env.PORT || 3001;
