@@ -2,6 +2,9 @@
 
 Web application made for 18-500: ECE Design Experience at Carnegie Mellon University.
 
+## Project Site:
+http://course.ece.cmu.edu/~ece500/projects/s19-teamb4/
+
 ## Quick Setup guide
 1) To run the client:
 
@@ -24,9 +27,6 @@ Web application made for 18-500: ECE Design Experience at Carnegie Mellon Univer
     
     The server runs on `localhost:3001`
     
-
-## Project Site:
-http://course.ece.cmu.edu/~ece500/projects/s19-teamb4/
 
 ## Other Links:
 https://www.valentinog.com/blog/socket-io-node-js-react/
