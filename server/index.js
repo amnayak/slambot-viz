@@ -30,8 +30,8 @@ router.post('/data', function(req, res){
   //ouput is an array of {x,y,size}
   datapoints = []
   var x, y;
-  for (x = 0; x < 144; x++) {
-    for (y = 0; y < 144; y++) {
+  for (x = 0; x < 288; x++) {
+    for (y = 0; y < 288; y++) {
 
         x_data = x;
         y_data = y;
